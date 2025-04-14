@@ -1,0 +1,61 @@
+name: Docker Hub Pulls
+slug: docker-hub-pulls
+type: plugin
+version: 0.1.0
+description: Retrieves pull count for configured Docker Hub images
+icon: plug
+author:
+  name: ABesnier
+  email: contact@papycasu.fr
+homepage: https://github.com/abesnier/grav-plugin-docker-hub-pulls
+keywords: grav, plugin, docker, dockerhub
+bugs: https://github.com/abesnier/grav-plugin-docker-hub-pulls/issues
+docs: https://github.com/abesnier/grav-plugin-docker-hub-pulls/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    username:
+      type: text
+      label: PLUGIN_DOCKER_HUB_PULLS.REPO_NAME
+      help: PLUGIN_DOCKER_HUB_PULLS.REPO_NAME_HELP
+    images:
+      type: selectize
+      size: large
+      label: PLUGIN_DOCKER_HUB_PULLS.IMAGES_VARIABLE
+      classes: fancy
+      help: PLUGIN_DOCKER_HUB_PULLS.IMAGES_VARIABLE_HELP
+      validate:
+         type: commalist
+    limit:
+      type: number
+      classes: fancy
+      label: PLUGIN_DOCKER_HUB_PULLS.LIMIT_VARIABLE
+      help: PLUGIN_DOCKER_HUB_PULLS.LIMIT_VARIABLE_HELP
+      validate:
+        min: 0
+        step: 1
+    orderby:
+      type: select
+      size: large
+      classes: fancy
+      label: PLUGIN_DOCKER_HUB_PULLS.ORDERBY
+      help: PLUGIN_DOCKER_HUB_PULLS.ORDERBY_HELP
+      options:
+        none: PLUGIN_DOCKER_HUB_PULLS.ORDERBY_NONE
+        name: PLUGIN_DOCKER_HUB_PULLS.ORDERBY_NAME
+        pulls: PLUGIN_DOCKER_HUB_PULLS.ORDERBY_PULLS

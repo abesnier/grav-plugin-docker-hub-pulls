@@ -1,0 +1,27 @@
+{% if taxo is defined %}
+
+taxo  = {{ taxo }}
+
+{% else %}
+bah non
+{% endif%}
+
+<br>
+<table>
+<tr>
+{% if hub_pulls %}
+{% for image,count in hub_pulls %}
+<tr><td><span title="{{ count[1] }}"><a href="https://hub.docker.com/r/{{ dockeruser }}/{{ image }}">{{ image }}</a></span></td>
+<td>
+{% if count[0] == "error" %}
+<span class="hint--bottom" title="Check the user name or the image name in the plugin configuration">Could not get pull count<i class="hint-icon fa fa-question-circle" aria-hidden="true"></i></span>
+{% else %}
+{{ count[0] }}
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+{% else %}
+Plugin not configured
+{% endif %}
+</tr> </table>

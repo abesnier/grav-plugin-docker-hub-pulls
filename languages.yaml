@@ -1,0 +1,19 @@
+en:
+  PLUGIN_DOCKER_HUB_PULLS:
+    IMAGES_VARIABLE: Images Name 
+    IMAGES_VARIABLE_HELP: The name of the image you want, as it appears in Docker Hub. Leave empty to retrieve your first 100 images (API limit, more than enough I believe!).
+    LIMIT_VARIABLE: Max number of images
+    LIMIT_VARIABLE_HELP: Use this value to limit how many images will be retrieved. This will be the first ones to be returned by DockerHub API.
+    REPO_NAME: Repository/username
+    REPO_NAME_HELP: Your Docker Hub username (e.g. linuxserver if you want image provided by https://hub.docker.com/u/linuxserver)
+    ORDERBY: Display order
+    ORDERBY_HELP: Order images by name, pull count, or as received from DockerHub API.
+    ORDERBY_NONE: None - results will be displayed as received from DockerHub API
+    ORDERBY_NAME: Name - order by image name ascending 
+    ORDERBY_PULLS: Pull Count - order by descending pull count
+fr: 
+  PLUGIN_DOCKER_HUB_PULLS: 
+    TEXT_VARIABLE: Nom de l'image 
+    TEXT_VARIABLE_HELP: Le nom de l'image tel qu'il apparaît sur Docker Hub.
+    REPO_NAME: Repository/Nom d'utilisateur
+    REPO_NAME_HELP: Votre nom d'utilisateur sur Docker Hub (par exemple, linuxserver si vous voulez les images de https://hub.docker.com/u/linuxserver)

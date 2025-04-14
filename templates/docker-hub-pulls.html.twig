@@ -1,0 +1,21 @@
+{% set hub_pulls = dockerpulls.getPulls() %} 
+
+<table>
+	<tr>
+		{% if hub_pulls %}
+		{% for image in hub_pulls %}
+		<tr><td><span title="{{ image["desc"] }}"><a href="https://hub.docker.com/r/{{ dockeruser }}/{{ image["name"] }}" target="_blank">{{ image["name"] }}</a></span></td>
+		<td>
+			{% if image["count"] == "error" %}
+			<span class="hint--bottom" title="Check the user name or the image name in the plugin configuration">Could not get pull count<i class="hint-icon fa fa-question-circle" aria-hidden="true"></i></span>
+			{% else %}
+			{{ image["count"] }}
+			{% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	Plugin not configured
+	{% endif %}
+</tr>
+</table>
