@@ -73,10 +73,21 @@ This will result in something like:
 
 ![Sample](img/sample_sidebar.png)
 
+## Other usage
+
+The file `classes\docker-hub-pulls.php` exposes 2 public functions, in case you want to use that somewhere else:
+ - `getUser`, that returns the Docker username setup in the configuration
+ - `getPulls`, that returns an array of arrays in the form [image name, image description, image pull count].
 
 ## Credits
 
-**Did you incorporate third-party code? Want to thank somebody?**
+**Did you incorporate third-party code?**
+
+No I don't think I did...
+
+**Want to thank somebody?**
+
+Grav Team of course, for their great work, and all the other plugins devs. Looking at the source helped me understand what to do, as I am not very familiar with PHP...
 
 ## To Do
 
