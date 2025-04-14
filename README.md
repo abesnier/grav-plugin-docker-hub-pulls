@@ -3,7 +3,7 @@
 The **Docker Hub Pulls** Plugin is an extension for [Grav CMS](https://github.com/getgrav/grav). It retrieves pull count for Docker images hosted by Docker Hub for a configured user.
 
 
-![Fancy!!](fancy.png)
+![Fancy!!](img/fancy.png)
 
 ## Installation
 
@@ -48,7 +48,7 @@ None: results will be displayed as per Docker Hub API returned values. Pulls (de
 
 Note that if you use the Admin Plugin, a file with your configuration named docker-hub-pulls.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
 
-![Admin PLugin](configuration.png)
+![Admin PLugin](img/configuration.png)
 
 ## Usage
 
@@ -71,7 +71,7 @@ Note that dockerpulls.getUser() is a public value exposed by the plugin.
 
 This will result in something like:
 
-![Sample](sample_sidebar.png)
+![Sample](img/sample_sidebar.png)
 
 
 ## Credits
