@@ -38,8 +38,8 @@ Before configuring this plugin, you should copy the `user/plugins/docker-hub-pul
 Here is the default configuration and an explanation of available options:
 
 ```yaml
-enabled: true
-username: your Docker Hub username
+enabled: true or false
+username: MANDATORY - your Docker Hub username
 images: a list of images you want to get the pull count of. If none are specified, all your images will be retrieved from the Docker Hub api.
 limit: if you have uploaded many images to Docker Hub, you can limit how many images you will get the pull count of (note that the list of images will be 100% depend on Docker Hub API)
 orderby: valid entried are none, pulls, name. 
