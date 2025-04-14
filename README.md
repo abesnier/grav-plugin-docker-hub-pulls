@@ -9,7 +9,7 @@ The **Docker Hub Pulls** Plugin is an extension for [Grav CMS](https://github.co
 
 Installing the Docker Hub Pulls plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
 
-### GPM Installation (Preferred)
+### GPM Installation (Preferred but only when the plugin will be approved)
 
 To install the plugin via the [GPM](https://learn.getgrav.org/cli-console/grav-cli-gpm), through your system's terminal (also called the command line), navigate to the root of your Grav-installation, and enter:
 
@@ -17,7 +17,7 @@ To install the plugin via the [GPM](https://learn.getgrav.org/cli-console/grav-c
 
 This will install the Docker Hub Pulls plugin into your `/user/plugins`-directory within Grav. Its files can be found under `/your/site/grav/user/plugins/docker-hub-pulls`.
 
-### Manual Installation
+### Manual Installation (to be used until the plugin is approved!)
 
 To install the plugin manually, download the zip-version of this repository and unzip it under `/your/site/grav/user/plugins`. Then rename the folder to `docker-hub-pulls`. You can find these files on [GitHub](https://github.com//grav-plugin-docker-hub-pulls) or via [GetGrav.org](https://getgrav.org/downloads/plugins).
 
