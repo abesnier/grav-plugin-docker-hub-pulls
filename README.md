@@ -38,21 +38,9 @@ Here is the default configuration and an explanation of available options:
 
 ```yaml
 enabled: true
-```
-
-```yaml
 username: your Docker Hub username
-```
-
-```yaml
 images: a list of images you want to get the pull count of. If none are specified, all your images will be retrieved from the Docker Hub api.
-```
-
-```yaml
 limit: if you have uploaded many images to Docker Hub, you can limit how many images you will get the pull count of (note that the list of images will be 100% depend on Docker Hub API)
-```
-
-```yaml
 orderby: valid entried are none, pulls, name. 
 ```
 None: results will be displayed as per Docker Hub API returned values. Pulls (default): order by pull count descending. Name: Order by image name ascending.
@@ -91,14 +79,11 @@ This will result in something like:
 ![Sample](sample_sidebar.png)
 
 
-
-
-
 ## Credits
 
 **Did you incorporate third-party code? Want to thank somebody?**
 
 ## To Do
 
-- [ ] Future plans, if any
+- You tell me! Maybe add more Docker repositories if they have a public api.
 

@@ -1,9 +1,9 @@
 {
-  "name": "papycasu/docker-hub-pulls",
+  "name": "abesnier/docker-hub-pulls",
   "type": "grav-plugin",
   "description": "Retrieves pull count for configured Docker Hub images",
   "keywords": ["plugin"],
-  "homepage": "https://github.com/papycasu/grav-plugin-docker-hub-pulls",
+  "homepage": "https://github.com/abesniergrav-plugin-docker-hub-pulls",
   "license": "MIT",
   "authors": [
     {

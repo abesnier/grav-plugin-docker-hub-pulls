@@ -17,3 +17,8 @@ fr:
     TEXT_VARIABLE_HELP: Le nom de l'image tel qu'il apparaît sur Docker Hub.
     REPO_NAME: Repository/Nom d'utilisateur
     REPO_NAME_HELP: Votre nom d'utilisateur sur Docker Hub (par exemple, linuxserver si vous voulez les images de https://hub.docker.com/u/linuxserver)
+    ORDERBY: Ordre d'affichage
+    ORDERBY_HELP: Ordonne les images par nom, nombre de pull, ou telles que reçues de l'API DockerHub.
+    ORDERBY_NONE: None - les résultates ston affichés tels que reçus de l'API DockerHub.
+    ORDERBY_NAME: Nom - trie les images par nom (ordre alphabétique)
+    ORDERBY_PULLS: Nombre de pulls - trie les images par nombre de pulls (ordre décroissant)
