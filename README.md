@@ -56,7 +56,7 @@ To show your Docker Hub stats in your sidebar (as this was intended for my desig
 
 Then, to display the widget, you can modify your sidebar.html.twig (or any other template) like so for example (in my case, using PinPress template):
 
-```
+```twig
 {% if config.plugins['docker-hub-pulls'].enabled %}
 <div class="widget HTML">
   <h2 class="title">Docker Hub Stats - <a href="https://hub.docker.com/u/{{ dockerpulls.getUser() }}" target="_blank">{{ dockerpulls.getUser() }}</a></h2>
