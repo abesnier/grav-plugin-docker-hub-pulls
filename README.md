@@ -67,9 +67,19 @@ Then, to display the widget, you can modify your sidebar.html.twig (or any other
 {% if config.plugins['docker-hub-pulls'].enabled %}
 <div class="widget HTML">
   <h2 class="title">Docker Hub Stats - <a href="https://hub.docker.com/u/{{ dockerpulls.getUser() }}" target="_blank">{{ dockerpulls.getUser() }}</a></h2>
-  <div class="widget-content docker-hub-pulls">
+  <div class="widget-content">
     {% include 'partials/docker-hub-pulls.html.twig' %}
   </div>
+</div>
+{% endif %}
+```
+
+or another example for Quark:
+```twig
+{% if config.plugins['docker-hub-pulls'].enabled %}
+<div class="sidebar-content">
+<h4>Docker Hub Stats <a href="https://hub.docker.com/u/{{ dockerpulls.getUser() }}" target="_blank">{{ dockerpulls.getUser() }}</a></h4>
+{% include 'partials/docker-hub-pulls.html.twig' %}
 </div>
 {% endif %}
 ```
@@ -83,8 +93,8 @@ This will result in something like:
 ## Other usage
 
 The file `classes\docker-hub-pulls.php` exposes 2 public functions, in case you want to use that somewhere else:
- - `getUser`, that returns the Docker username setup in the configuration
- - `getPulls`, that returns an array of arrays in the form [image name, image description, image pull count].
+ - `getUser()`, that returns the Docker username setup in the configuration
+ - `getPulls()`, that returns an array of arrays in the form [image name, image description, image pull count].
 
 ## Credits
 
