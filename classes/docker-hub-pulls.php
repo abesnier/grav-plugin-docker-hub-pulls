@@ -16,7 +16,7 @@ class DockerHubPulls
 
 	/**
 	 *
-	 * @return An array of array containing the image name, its description, and its pull count
+	 * @return array An array of array containing the image name, its description, and its pull count
 	 */
 	public function getPulls()
 	{
@@ -37,11 +37,14 @@ class DockerHubPulls
 	}
 
 
+        /**
+         *
+         *@return string the username as setup in the configuration
+         */
 	public function getUser()
 	{
 		return Grav::instance()['config']->get('plugins.docker-hub-pulls.username');
 	}
-
 
 
 	// If we query https://hub.docker.com/v2/repositories/username/, this will return all the images (with some caveats) uploaded by the user.
@@ -62,6 +65,7 @@ class DockerHubPulls
 		}
 	}
 
+
 	// By default, Docker Hub api returns 10 images, but it can be overriden and the results are paginated 100 by 100
 	// So we make a first query to read the count of images and use it in the function getAllPullsAtOnce.
 	// The API returns a json object where we can read the key 'count'.
@@ -78,6 +82,7 @@ class DockerHubPulls
 		} //because I needed a limit...
 	}
 
+
 	// Makes a simple query based on the template https://hub.docker.com/v2/repositories/username/image
 	// The API returns a json object we can read.
 	protected function getPullsByImage($username, $image)
@@ -91,6 +96,7 @@ class DockerHubPulls
 			return array("error", "error");
 		}
 	}
+
 
 	// Order the results if this is set in the plugin configuration
 	// Because the results are an array of arrays, custom comparison functions are required. See below.
@@ -112,6 +118,7 @@ class DockerHubPulls
 		}
 	}
 
+
 	// Compare the pull counts of objects.
 	// Returns in descending order
 	protected function comparePulls($a, $b)
@@ -121,6 +128,7 @@ class DockerHubPulls
 		}
 		return ($a["count"] < $b["count"]) ? 1 : -1;
 	}
+
 
 	// Compare the image name of objects.
 	// Returns in ascending order

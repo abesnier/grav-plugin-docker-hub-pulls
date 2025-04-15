@@ -47,8 +47,6 @@ class DockerHubPullsPlugin extends Plugin
 	}
 
 
-
-
 	/**
 	 * Initialize the plugin
 	 */
@@ -69,6 +67,7 @@ class DockerHubPullsPlugin extends Plugin
 		}
 	}
 
+
 	/**
 	 * Add current directory to twig lookup paths.
 	 *
@@ -85,7 +84,6 @@ class DockerHubPullsPlugin extends Plugin
 	 *
 	 * @return void
 	 */
-
 	public function onTwigSiteVariables()
 	{
 		$twig = $this->grav['twig'];
