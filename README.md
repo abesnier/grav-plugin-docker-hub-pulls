@@ -25,7 +25,7 @@ You should now have all the plugin files under
 
     /your/site/grav/user/plugins/docker-hub-pulls
 	
-> NOTE: This plugin is a modular component for Grav which may require other plugins to operate, please see its [blueprints.yaml-file on GitHub](https://github.com//grav-plugin-docker-hub-pulls/blob/main/blueprints.yaml).
+> NOTE: This plugin is a modular component for Grav which may require other plugins to operate, please see its [blueprints.yaml-file on GitHub](https://github.com//grav-plugin-docker-hub-pulls/blob/master/blueprints.yaml).
 
 ### Admin Plugin
 
@@ -40,11 +40,18 @@ Here is the default configuration and an explanation of available options:
 ```yaml
 enabled: true or false
 username: MANDATORY - your Docker Hub username
-images: a list of images you want to get the pull count of. If none are specified, all your images will be retrieved from the Docker Hub api.
+images: a bullet list of images you want to get the pull count of. If none are specified, all your images will be retrieved from the Docker Hub api.
 limit: if you have uploaded many images to Docker Hub, you can limit how many images you will get the pull count of (note that the list of images will be 100% depend on Docker Hub API)
 orderby: valid entried are none, pulls, name. 
 ```
 None: results will be displayed as per Docker Hub API returned values. Pulls (default): order by pull count descending. Name: Order by image name ascending.
+
+> Note: images must be listed in the form of a YAML List:
+> ```yaml
+> images:
+>   - image1
+>   - image2
+> ```
 
 Note that if you use the Admin Plugin, a file with your configuration named docker-hub-pulls.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
 
