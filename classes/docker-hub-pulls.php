@@ -37,18 +37,32 @@ class DockerHubPulls
 	}
 
 
-        /**
-         *
-         *@return string the username as setup in the configuration
-         */
+	/**
+	 *
+	 *@return string the username as setup in the configuration
+	 */
 	public function getUser()
 	{
 		return Grav::instance()['config']->get('plugins.docker-hub-pulls.username');
 	}
 
-
-	// If we query https://hub.docker.com/v2/repositories/username/, this will return all the images (with some caveats) uploaded by the user.
-	// This function is called if the user has not specified any image in the plugin configuration
+	/**
+	 * Retrieves all Docker Hub repository pulls for a given username in a single API call.
+	 * 
+	 * This function queries the Docker Hub API to fetch all images uploaded by the specified user.
+	 * It calculates the total number of images uploaded by the user and uses it as the page size
+	 * for the API request. The results are then processed and stored in the `$pulls` property.
+	 * 
+	 * @param string $username The Docker Hub username whose repository pulls are to be retrieved.
+	 * 
+	 * @return array An array of repository pull data, each containing:
+	 *               - "name" (string): The name of the repository.
+	 *               - "count" (int): The pull count of the repository.
+	 *               - "desc" (string|null): The description of the repository.
+	 *               If an error occurs, an array with a single entry ["error", "error"] is returned.
+	 * 
+	 * @throws \Exception If an error occurs during the API request or data processing.
+	 */
 	protected function getAllPullsAtOnce($username)
 	{
 		try {
@@ -65,10 +79,17 @@ class DockerHubPulls
 		}
 	}
 
-
-	// By default, Docker Hub api returns 10 images, but it can be overriden and the results are paginated 100 by 100
-	// So we make a first query to read the count of images and use it in the function getAllPullsAtOnce.
-	// The API returns a json object where we can read the key 'count'.
+	/**
+	 * Retrieves the total count of images for a given Docker Hub username.
+	 *
+	 * This function makes an API call to Docker Hub to fetch the count of images
+	 * associated with the specified username. If a limit is configured in the plugin
+	 * settings, it will return that limit instead of making the API call. In case of
+	 * an error during the API call, a default value of 20 is returned.
+	 *
+	 * @param string $username The Docker Hub username for which to retrieve the image count.
+	 * @return int The total count of images or the configured limit.
+	 */
 	protected function getImagesCount($username)
 	{
 		if (Grav::instance()['config']->get('plugins.docker-hub-pulls.limit')) return Grav::instance()['config']->get('plugins.docker-hub-pulls.limit');
@@ -83,15 +104,30 @@ class DockerHubPulls
 	}
 
 
-	// Makes a simple query based on the template https://hub.docker.com/v2/repositories/username/image
-	// The API returns a json object we can read.
+
+	/**
+	 * Retrieves pull count and description for a specific Docker Hub image.
+	 *
+	 * @param string $username The Docker Hub username associated with the image.
+	 * @param string $image The name of the Docker Hub image.
+	 * 
+	 * @return array An associative array containing:
+	 *               - "name" (string): The name of the image.
+	 *               - "count" (int): The pull count of the image (default is 0 if not available).
+	 *               - "desc" (string): The description of the image (default is "No description available" if not provided).
+	 *               - If an error occurs, returns an array with two "error" strings.
+	 */
 	protected function getPullsByImage($username, $image)
 	{
 		try {
 			$url = self::URL . $username . "/" . $image;
 			$str = file_get_contents($url);
 			$json = json_decode($str, true);
-			return array("name" => $image, "count" => $json['pull_count'], "desc" => $json['description']);
+			return array(
+				"name" => $image,
+				"count" => isset($json['pull_count']) ? $json['pull_count'] : 0,
+				"desc" => isset($json['description']) ? $json['description'] : "No description available"
+			);
 		} catch (\Exception $e) {
 			return array("error", "error");
 		}
@@ -123,10 +159,7 @@ class DockerHubPulls
 	// Returns in descending order
 	protected function comparePulls($a, $b)
 	{
-		if ($a["count"] == $b["count"]) {
-			return 0;
-		}
-		return ($a["count"] < $b["count"]) ? 1 : -1;
+		return $b["count"] <=> $a["count"];
 	}
 
 
@@ -134,6 +167,7 @@ class DockerHubPulls
 	// Returns in ascending order
 	protected function compareName($a, $b)
 	{
+		// Perform a case-sensitive alphabetical comparison of image names
 		return strcmp($a["name"], $b["name"]);
 	}
 }
