@@ -56,7 +56,7 @@ class DockerHubPulls
 			$str = file_get_contents($url);
 			$json = json_decode($str, true);
 			foreach ($json['results'] as $result) {
-				$this->pulls[] = array("name" => $result['name'], "count" => $result['pull_count'], "desc" => $result['description']);
+				$this->pulls[] = array("name" => $result['name'], "count" => $result['pull_count'], "daysSinceUpdate" => $this->daysSinceUpdate($result["last_updated"]), "desc" => $result['description']);
 			}
 
 			return $this->orderResults($this->pulls);
@@ -91,11 +91,12 @@ class DockerHubPulls
 			$url = self::URL . $username . "/" . $image;
 			$str = file_get_contents($url);
 			$json = json_decode($str, true);
-			return array("name" => $image, "count" => $json['pull_count'], "desc" => $json['description']);
+			return array("name" => $image, "count" => $json['pull_count'], "daysSinceUpdate" => $this->daysSinceUpdate($json["last_updated"]), "desc" => $json['description']);
 		} catch (\Exception $e) {
 			return array("error", "error");
 		}
 	}
+
 
 
 	// Order the results if this is set in the plugin configuration
@@ -135,5 +136,20 @@ class DockerHubPulls
 	protected function compareName($a, $b)
 	{
 		return strcmp($a["name"], $b["name"]);
+	}
+
+	// Simple calculation to count number of days between now and a date represented by a string
+	// Returns the number of days, or -1 in case of error
+	protected function daysSinceUpdate($last_updated)
+        {
+		try {
+			$now = time();
+			$your_date = strtotime($last_updated);
+			$datediff = $now - $your_date;
+			return round($datediff / (60 * 60 * 24));
+		}
+		catch(\Exception $e) {
+			return -1;
+		}
 	}
 }

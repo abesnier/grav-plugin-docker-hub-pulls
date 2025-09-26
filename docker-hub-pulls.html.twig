@@ -1,0 +1,34 @@
+{% set hub_pulls = dockerpulls.getPulls() %} 
+{% set user = dockerpulls.getUser() %} 
+
+<table>
+	<tr style="text-align:left;">
+                <th>Image</th><th>Pulls</th><th>Last Update</th>
+	</tr>
+		{% if hub_pulls %}
+		{% for image in hub_pulls %}
+		<tr>
+		<td>
+			<span title="{{ image["desc"] }}"><a href="https://hub.docker.com/r/{{ user }}/{{ image["name"] }}" target="_blank">{{ image["name"] }}</a></span>
+		</td>
+		<td>
+			{% if image["count"] == "error" %}
+			<span class="hint--bottom" title="Check the user name or the image name in the plugin configuration">Could not get pull count<i class="hint-icon fa fa-question-circle" aria-hidden="true"></i></span>
+			{% else %}
+			{{ image["count"] }}
+			{% endif %}
+		</td>
+		<td>
+			{% if image["count"] != "error" && image["daysSinceUpdate"] != -1 %}
+			{% if image["daysSinceUpdate"] == 0 %} Today
+			{% elseif image["daysSinceUpdate"] == 0 %} Yesterday
+			{% else %} {{ image["daysSinceUpdate"] }} days ago
+                        {% endif %}
+                        {% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	Plugin not configured
+	{% endif %}
+</table>
