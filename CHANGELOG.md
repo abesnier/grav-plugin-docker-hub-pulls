@@ -1,7 +1,7 @@
 # v0.1.2
 ##  09/22/2026
 
-1. [](#bug fix)
+1. [](#bugfix)
     * Fixed a logical operand bug.
     * Minor formatting fixing.
 
