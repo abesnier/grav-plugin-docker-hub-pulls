@@ -1,7 +1,7 @@
 name: Docker Hub Pulls
 slug: docker-hub-pulls
 type: plugin
-version: 0.1.0
+version: 0.1.1
 description: Retrieves pull count for configured Docker Hub images
 icon: plug
 author:
