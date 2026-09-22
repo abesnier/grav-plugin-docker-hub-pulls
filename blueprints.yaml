@@ -12,9 +12,11 @@ keywords: grav, plugin, docker, dockerhub
 bugs: https://github.com/abesnier/grav-plugin-docker-hub-pulls/issues
 docs: https://github.com/abesnier/grav-plugin-docker-hub-pulls/blob/develop/README.md
 license: MIT
+compatibility:
+   grav: ['1.7', '2.0']
 
 dependencies:
-  - { name: grav, version: '>=1.6.0' }
+  - { name: grav, version: '>=1.7.0' }
 
 form:
   validation: loose
