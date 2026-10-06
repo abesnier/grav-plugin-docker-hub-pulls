@@ -10,7 +10,7 @@ author:
 homepage: https://github.com/abesnier/grav-plugin-docker-hub-pulls
 keywords: grav, plugin, docker, dockerhub
 bugs: https://github.com/abesnier/grav-plugin-docker-hub-pulls/issues
-docs: https://github.com/abesnier/grav-plugin-docker-hub-pulls/blob/develop/README.md
+docs: https://github.com/abesnier/grav-plugin-docker-hub-pulls/README.md
 license: MIT
 compatibility:
    grav: ['1.7', '2.0']
