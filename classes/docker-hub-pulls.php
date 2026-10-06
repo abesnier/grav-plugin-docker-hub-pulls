@@ -93,7 +93,7 @@ class DockerHubPulls
 			$json = json_decode($str, true);
 			return array("name" => $image, "count" => $json['pull_count'], "daysSinceUpdate" => $this->daysSinceUpdate($json["last_updated"]), "desc" => $json['description']);
 		} catch (\Exception $e) {
-			return array("error", "error");
+			return array("name" => $image, "count" => "error");
 		}
 	}
 
