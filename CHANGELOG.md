@@ -1,3 +1,9 @@
+# v0.1.4
+##  10/06/2026
+
+1. [](#bugfix)
+    * Fixed an unhandled exception... sorry...
+
 # v0.1.3
 ##  09/22/2026
 
